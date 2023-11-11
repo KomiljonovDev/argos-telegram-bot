@@ -5,9 +5,9 @@
 	{
 		// Baza ma'lumotlari
 		private const HOSTNAME = 'localhost';
-		private const USERNAME = 'komiljonov_db35';
+		private const USERNAME = 'komiljonov_db36';
 		private const PASSWORD = 'st6BWHM33WjiGfqd';
-		private const DATABASE_NAME = 'komiljonov_db35';
+		private const DATABASE_NAME = 'komiljonov_db36';
 
 		protected $conn;
 

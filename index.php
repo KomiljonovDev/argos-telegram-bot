@@ -17,7 +17,7 @@
 
 	use TelegramBot as Bot;
 
-	$token = "6004032462:AAE55VBveQLLWqlGr1FaYiVenaaVrvrApxE";
+	$token = "6816699025:AAGr-s99vKIrKFVwsa_q8NrTxSusvk5BSV4";
 	$dataSet = ['botToken'=>$token];
 
 	$bot = new Bot($dataSet);
@@ -77,11 +77,11 @@
 						$bot->sendChatAction('typing', $chat_id)->setInlineKeyBoard($inline_keyboard)->sendMessage("<b>Assalomu alaykum, " . $full_name ." siz 2-martta botga start berdingiz</b>");
 						exit();
 					}
-					if ($user['data'] == 'register' && $user['step'] == '2') {
+					if ($user['data'] == 'register' && $user['step'] == '1') {
 						if ($text) {
 							$db->updateWhere('users',
 								[
-									'step'=>3,
+									'step'=>2,
 									'full_name'=>$text
 								],
 								[
