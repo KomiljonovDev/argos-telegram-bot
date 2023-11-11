@@ -1,5 +1,0 @@
-<?php
-
-include 'app.php';
-
-?>
