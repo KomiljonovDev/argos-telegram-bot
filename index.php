@@ -35,7 +35,6 @@
 		]
 	];
 
-
 	$resize_keyoard = [
 		[
 			['text'=>"✅ Yuborish"],
