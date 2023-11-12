@@ -29,6 +29,7 @@ include 'helpers/sendMessageToUsers.php';
 
 include 'helpers/activeUsers.php';
 include 'helpers/admin/forQuistion.php';
+include 'helpers/admin/admin.php';
 
 if ($update) {
     if (isset($update->message)) {
@@ -298,6 +299,4 @@ if ($update) {
         }
     }
 }
-
-include 'helpers/admin/admin.php';
 ?>
