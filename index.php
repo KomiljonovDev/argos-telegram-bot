@@ -70,10 +70,10 @@
 							]
 						);
 						if ($myUser) {
-							$bot->sendChatAction('typing', $chat_id)->setInlineKeyBoard($inline_keyboard)->sendMessage("<b>Assalomu alaykum, " . $full_name ." siz 1-martta botga start berdingiz </b>");
+							$bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ." siz 1-martta botga start berdingiz </b>");
 							exit();
 						}
-						$bot->sendChatAction('typing', $chat_id)->setInlineKeyBoard($inline_keyboard)->sendMessage("<b>Assalomu alaykum, " . $full_name ." siz 2-martta botga start berdingiz</b>");
+						$bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ." siz 2-martta botga start berdingiz</b>");
 						exit();
 					}
 					if ($user['data'] == 'register' && $user['step'] == '1') {
