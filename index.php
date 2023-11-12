@@ -34,7 +34,7 @@
 			if ($type == 'private') {
 				if (removeBotUserName($text) == "/start") {
                     $bot->sendChatAction('typing', $fromid)->sendMessage(json_encode($update));
-					$myUser = myUser(['fromid','name','user','chat_type','lang','del'],[$fromid,$full_name,$user ?? null,'private','',0]);
+					$myUser = myUser(['fromid','name','user','chat_type','lang','del'],[$fromid,$full_name,$user ?? null,'private',$lang_code,0]);
 				}
 				if (channel($fromid)) {
 					$user = mysqli_fetch_assoc(

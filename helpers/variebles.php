@@ -13,6 +13,7 @@ if (isset($update)) {
         $full_name = html($full_name);
         $user = $message->from->username ?? '';
         $fromid = $message->from->id;
+        $lang_code = $message->from->language_code;
         $text = html($message->text);
         $title = $message->chat->title;
         $chatuser = $message->chat->username;
