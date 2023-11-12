@@ -113,6 +113,11 @@ if ($update) {
                         ])
                     );
                     $bot->sendChatAction('typing', $quistion['chat_id'])->sendMessage($text);
+                    $bot->request('editMessageText', [
+                        'chat_id'=>$quistion['channel_id'],
+                        'message_id'=>$quistion['message_id'],
+                        'text'=>$quistion['quistion'] . "\n\nJavob berildi."
+                    ]);
                     $bot->sendChatAction('typing', $fromid)->sendMessage("Habar yuborildi.");
                 }
                 exit();
