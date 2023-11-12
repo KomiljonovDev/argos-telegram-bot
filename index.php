@@ -47,21 +47,21 @@ if ($update) {
                 );
                 $user_data = json_decode($user['data']);
                 if (removeBotUserName($text) == "/start") {
-                    $db->updateWhere('users',
-                        [
-                            'data'=>'register',
-                            'step'=>1
-                        ],
-                        [
-                            'fromid'=>$fromid,
-                            'cn'=>'='
-                        ]
-                    );
                     if ($myUser) {
+                        $db->updateWhere('users',
+                            [
+                                'data'=>'register',
+                                'step'=>1
+                            ],
+                            [
+                                'fromid'=>$fromid,
+                                'cn'=>'='
+                            ]
+                        );
                         $bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ."\nRo'yxatdan o'tish boshlandi.\n\nF.I.SH ni kiriting.\nQuyidagi formatda: Komiljonov Obidjon Komiljon O'g'li</b>");
                         exit();
                     }
-                    $bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ."\nRo'yxatdan o'tish boshlandi. Savol yo'llash uhcun /quistion buyrug'ini yuboring.</b>");
+                    $bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ."Savol yo'llash uhcun /quistion buyrug'ini yuboring.</b>");
                     exit();
                 }
                 if ($user['data'] == 'register' && $user['step'] == '1') {
