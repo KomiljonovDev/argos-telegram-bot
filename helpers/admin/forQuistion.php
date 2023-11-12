@@ -82,6 +82,29 @@ if ($update) {
                 }
                 exit();
             }
+
+            if (mb_stripos($text, "/del_faq_")!==false){
+                $del_faq_id = explode("/del_faq_", $text)[1];
+                $db->deleteWhere('faqs',[
+                    [
+                        'fromid'=>$del_faq_id,
+                        'cn'=>'='
+                    ]
+                ]);
+                $bot->sendChatAction('typing', $fromid)->sendMessage("Muvoffaqiyatli O'chirildi.");
+                exit();
+            }
+            if (mb_stripos($text, "/del_quistion_chapter_")!==false){
+                $quistion_chapter_id = explode("/del_quistion_chapter_", $text)[1];
+                $db->deleteWhere('quistion_chapters',[
+                    [
+                        'fromid'=>$quistion_chapter_id,
+                        'cn'=>'='
+                    ]
+                ]);
+                $bot->sendChatAction('typing', $fromid)->sendMessage("Muvoffaqiyatli O'chirildi.");
+                exit();
+            }
         }
     }elseif (isset($update->callback_query)){
         if ($data == "add_FAQ"){
