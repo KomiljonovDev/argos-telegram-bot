@@ -73,7 +73,7 @@ if ($update) {
                     'cn'=>'='
                 ]
             );
-            $bot->sendChatAction('typing', $fromid)->editMessageText("FAQ qo'shish. Savolni yozing.");
+            $bot->sendChatAction('typing', $cbid)->editMessageText("FAQ qo'shish. Savolni yozing.");
             exit();
         }
     }
