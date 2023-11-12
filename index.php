@@ -147,9 +147,8 @@
 					$bot->sendChatAction('typing', $cbid)->editMessageText("Assalomu alaykum, xush kelibsiz!", $mid);
 					exit();
 				}
-
-				if (mb_stripos("region_", $data)!==false) {
-					$bot->sendChatAction('typing', $cbid)->setInlineKeyBoard($inline_keyboard)->editMessageText("Tumanni tanlang:", $mid);
+				if (mb_stripos($data, "region_")!==false) {
+					$bot->sendChatAction('typing', $cbid)->editMessageText("Tumanni tanlang:", $mid);
 					exit();
 				}
 			}
