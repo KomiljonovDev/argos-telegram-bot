@@ -97,19 +97,16 @@
                     if ($user['data'] == 'quistion' && $user['step'] == '2') {
                         if ($text) {
                             $bot->sendChatAction('typing', $fromid)->sendMessage("Habaringiz adminlarimizga yuborildi. Javoni kuting.");
-                            $admins = $db->selectWhere('admins',[
-                                [
-                                    'id'=>1,
-                                    'cn'=>'>='
-                                ]
+                            $bot->request('copyMessage',[
+                                'chat_id'=>$fromid,
+                                'from_chat_id'=>$fromid,
+                                'message_id'=>$miid,
+                                'reply_markup'=>json_encode([
+                                    'inline_keyboard'=>[
+                                        ['text'=>'Javob berish', 'url'=>'https://t.me/quizbot?id=1']
+                                    ]
+                                ])
                             ]);
-                            foreach ($admins as $admin){
-                                $bot->request('copyMessage',[
-                                    'chat_id'=>$admin['fromid'],
-                                    'from_chat_id'=>$fromid,
-                                    'message_id'=>$miid
-                                ]);
-                            }
                         }
                     }
 				}
