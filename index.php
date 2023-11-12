@@ -171,7 +171,7 @@
                     exit();
                 }
                 if ($data == 'other_question'){
-                    $other_chapter = $db->selectWhere('quistion_chapters',[
+                    $other_chapters = $db->selectWhere('quistion_chapters',[
                         [
                             'id'=>1,
                             'cn'=>'>='
@@ -180,10 +180,10 @@
                     $i = 0;
                     $chapter_text = "Savolingiz qaysi bo'limga yaqinroq? Agar topa olmasangiz boshqa tugmasini bosing.";
                     $faq_keyboard = [];
-                    foreach ($chapters as $chapter){
+                    foreach ($other_chapters as $other_chapter){
                         $i++;
-                        $chapter_text .= "\n" . $i . ") " . $chapter['name'];
-                        $chapter_keyboard[] = ['text'=>$i, 'callback_data'=>'chapterq_' . $chapter['id']];
+                        $chapter_text .= "\n" . $i . ") " . $other_chapter['name'];
+                        $chapter_keyboard[] = ['text'=>$i, 'callback_data'=>'chapterq_' . $other_chapter['id']];
                     }
                     $bot->sendChatAction('typing', $cbid)->editMessageText($chapter_text, $mid);
                     exit();
