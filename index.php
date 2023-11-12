@@ -94,6 +94,11 @@
                             $bot->sendChatAction('typing', $fromid)->setInlineKeyBoard($regions)->sendMessage("Viloyatingizni tanlang:");
                         }
                     }
+                    if ($user['data'] == 'quistion' && $user['step'] == '2') {
+                        if ($text) {
+                            $bot->sendChatAction('typing', $fromid)->sendMessage("Habaringiz adminlarimizga yuborildi. Javoni kuting.");
+                        }
+                    }
 				}
 			}else{
 				if (removeBotUserName($text) == "/start") {
@@ -225,7 +230,7 @@
                             'cn'=>'='
                         ]
                     );
-                    $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard($answer_option)->editMessageText("Savolingizni yozib qoldiring. Marhamat", $mid);
+                    $bot->sendChatAction('typing', $cbid)->editMessageText("Savolingizni yozib qoldiring. Marhamat", $mid);
                     exit();
                 }
 			}
