@@ -155,8 +155,8 @@
                 if ($data == 'FAQ'){
                     $FAQs = $db->selectWhere('faqs',[
                         [
-                            'fromid'=>$cbid,
-                            'cn'=>'='
+                            'id'=>1,
+                            'cn'=>'=>'
                         ]
                     ]);
                     $i = 0;
