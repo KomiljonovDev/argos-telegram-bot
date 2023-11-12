@@ -87,7 +87,7 @@ if ($update) {
                 $del_faq_id = explode("/del_faq_", $text)[1];
                 $db->deleteWhere('faqs',[
                     [
-                        'fromid'=>$del_faq_id,
+                        'id'=>$del_faq_id,
                         'cn'=>'='
                     ]
                 ]);
@@ -95,11 +95,10 @@ if ($update) {
                 exit();
             }
             if (mb_stripos($text, "/del_quistion_chapter_")!==false){
-                $bot->sendChatAction('typing', $fromid)->sendMessage("Muvoffaqiyatli O'chirildi.");
                 $quistion_chapter_id = explode("/del_quistion_chapter_", $text)[1];
                 $db->deleteWhere('quistion_chapters',[
                     [
-                        'fromid'=>$quistion_chapter_id,
+                        'id'=>$quistion_chapter_id,
                         'cn'=>'='
                     ]
                 ]);
