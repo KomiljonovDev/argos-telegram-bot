@@ -84,7 +84,27 @@ if ($update) {
             }
 
             if (mb_stripos($text, "/start quistion_id_")!==false){
-                $bot->sendChatAction('typing', $fromid)->sendMessage(json_encode($text));
+                $quistion_id = explode("/start quistion_id_", $text)[1];
+                $admin = mysqli_fetch_assoc(
+                    $db->selectWhere('quistions',[
+                        [
+                            'id'=>$quistion_id,
+                            'cn'=>'='
+                        ]
+                    ])
+                );
+                $db->updateWhere('admins',
+                    [
+                        'menu'=>'answering',
+                        'step'=>'1',
+                        'data'=>$quistion_id
+                    ],
+                    [
+                        'fromid'=>$fromid,
+                        'cn'=>'='
+                    ]
+                );
+                $bot->sendChatAction('typing', $fromid)->sendMessage("O'z javobingizni yozing.");
                 exit();
             }
 
