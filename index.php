@@ -29,30 +29,6 @@
 
 	include 'helpers/activeUsers.php';
 
-	$regions  = array_chunk([
-            ['text'=>"Andijon", 'callback_data'=>'region_andijon'],
-            ['text'=>"Namangan", 'callback_data'=>'region_namangan'],
-            ['text'=>"Farg'ona", 'callback_data'=>'region_fargona'],
-            ['text'=>"Toshkent Viloyati", 'callback_data'=>'region_toshkentv'],
-            ['text'=>"Toshkent Shahar", 'callback_data'=>'region_toshkentsh'],
-            ['text'=>"Buxoro", 'callback_data'=>'region_buxoro'],
-            ['text'=>"Jizzax", 'callback_data'=>'region_jizzax'],
-            ['text'=>"Navoiy", 'callback_data'=>'region_navoiy'],
-            ['text'=>"Qashqadaryo", 'callback_data'=>'region_qashqadaryo'],
-            ['text'=>"Samarqand", 'callback_data'=>'region_samarqand'],
-            ['text'=>"Sirdaryo", 'callback_data'=>'region_sardaryo'],
-            ['text'=>"Surxandaryo", 'callback_data'=>'region_surxandaryo'],
-            ['text'=>"Xorazm", 'callback_data'=>'region_xorazm'],
-            ['text'=>"Qoraqalpoq", 'callback_data'=>'region_qoraqalpoq']
-	], 2);
-
-	$resize_keyoard = [
-		[
-			['text'=>"✅ Yuborish"],
-			['text'=>"✍️ Tahrirlash"],
-		]
-	];
-
 	if ($update) {
 		if (isset($update->message)) {
 			if ($type == 'private') {
@@ -107,7 +83,7 @@
                         if ($text) {
                             $db->updateWhere('users',
                                 [
-                                    'step'=>2,
+                                    'step'=>3,
                                     'phone'=>$text
                                 ],
                                 [
@@ -115,7 +91,6 @@
                                     'cn'=>'='
                                 ]
                             );
-
                             $bot->sendChatAction('typing', $fromid)->setInlineKeyBoard($regions)->sendMessage("Viloyatingizni tanlang:");
                         }
                     }
@@ -147,7 +122,18 @@
 					$bot->sendChatAction('typing', $cbid)->editMessageText("Assalomu alaykum, xush kelibsiz!", $mid);
 					exit();
 				}
-				if (mb_stripos($data, "region_")!==false) {
+				if (mb_stripos($data, "region_")!==false && $user['data'] == 'register' && $user['step'] == 3) {
+                    $region = explode("region_", $data)[1];
+                    $db->updateWhere('users',
+                        [
+                            'step'=>2,
+                            'region'=>ucwords($region)
+                        ],
+                        [
+                            'fromid'=>$fromid,
+                            'cn'=>'='
+                        ]
+                    );
 					$bot->sendChatAction('typing', $cbid)->editMessageText("Tumanni tanlang:", $mid);
 					exit();
 				}
