@@ -89,6 +89,14 @@ $answer_option = [
         ['text'=>"Boshqa", 'callback_data'=>'other_question']
     ]
 ];
+$panel = [
+    [
+        ['text'=>"FAQ qo'shish", 'callback_data'=>'add_FAQ'],
+    ],
+    [
+        ['text'=>"Savol bo'lim qo'shish", 'callback_data'=>'add_chapter']
+    ]
+];
 $resize_keyoard = [
     [
         ['text'=>"✅ Yuborish"],
