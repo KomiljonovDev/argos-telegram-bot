@@ -82,17 +82,33 @@ if ($update) {
                 }
                 exit();
             }
+            if ($admin['menu'] == 'answering' && $admin['step'] == '1'){
+                if ($text){
+                    $db->updateWhere('quistions',
+                        [
+                            'answer'=>$text
+                        ],
+                        [
+                            'id'=>$admin['data'],
+                            'cn'=>'='
+                        ]
+                    );
+                    $db->updateWhere('admins',
+                        [
+                            'step'=>'2'
+                        ],
+                        [
+                            'fromid'=>$fromid,
+                            'cn'=>'='
+                        ]
+                    );
+                    $bot->sendChatAction('typing', $fromid)->sendMessage("Habar yuborildi.");
+                }
+                exit();
+            }
 
             if (mb_stripos($text, "/start quistion_id_")!==false){
                 $quistion_id = explode("/start quistion_id_", $text)[1];
-                $admin = mysqli_fetch_assoc(
-                    $db->selectWhere('quistions',[
-                        [
-                            'id'=>$quistion_id,
-                            'cn'=>'='
-                        ]
-                    ])
-                );
                 $db->updateWhere('admins',
                     [
                         'menu'=>'answering',
