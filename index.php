@@ -165,13 +165,27 @@
                     foreach ($FAQs as $faq){
                         $i++;
                         $FAQ_text .= "\n" . $i . ") " . $faq['name'];
-                        $faq_keyboard[] = ['text'=>$i, 'callback_data'=>'quistion_' . $faq['id']];
+                        $faq_keyboard[] = ['text'=>$i, 'callback_data'=>'faq_quistion_' . $faq['id']];
                     }
-                    $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($faq_keyboard,5))->sendMessage($FAQ_text);
+                    $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($faq_keyboard,5))->editMessageText($FAQ_text, $mid);
                     exit();
                 }
-                if ($data == 'few'){
-                    $bot->sendChatAction('typing', $cbid)->editMessageText("Other quistion chapter.", $mid);
+                if ($data == 'other_question'){
+                    $other_chapter = $db->selectWhere('quistion_chapters',[
+                        [
+                            'id'=>1,
+                            'cn'=>'>='
+                        ]
+                    ]);
+                    $i = 0;
+                    $chapter_text = "Savolingiz qaysi bo'limga yaqinroq? Agar topa olmasangiz boshqa tugmasini bosing.";
+                    $faq_keyboard = [];
+                    foreach ($chapters as $chapter){
+                        $i++;
+                        $chapter_text .= "\n" . $i . ") " . $chapter['name'];
+                        $chapter_keyboard[] = ['text'=>$i, 'callback_data'=>'chapter_quistion_' . $chapter['id']];
+                    }
+                    $bot->sendChatAction('typing', $cbid)->editMessageText($chapter_text, $mid);
                     exit();
                 }
 			}
