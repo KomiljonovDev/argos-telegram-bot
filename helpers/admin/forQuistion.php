@@ -5,6 +5,7 @@ if ($update) {
         if (isAdmin($fromid)) {
             if (strtolower($text) == '/panel') {
                 $bot->sendChatAction('typing', $fromid)->setInlineKeyBoard($panel)->sendMessage("Menyudan birini tanlang:");
+                exit();
             }
             $admin = mysqli_fetch_assoc(
                 $db->selectWhere('admins',[
@@ -32,6 +33,7 @@ if ($update) {
                     );
                     $bot->sendChatAction('typing', $fromid)->sendMessage("Endi savol uchun javobni yozing.");
                 }
+                exit();
             }
             if ($admin['menu'] == 'add_FAQ' && $admin['step'] == '2'){
                 if ($text){
@@ -56,6 +58,7 @@ if ($update) {
                     );
                     $bot->sendChatAction('typing', $fromid)->sendMessage("Muvoffaqiyatli qo'shildi. O'chirish uchun link:\n\n/del_faq_" . $admin['data']);
                 }
+                exit();
             }
         }
     }elseif (isset($update->callback_query)){
@@ -71,6 +74,7 @@ if ($update) {
                 ]
             );
             $bot->sendChatAction('typing', $fromid)->editMessageText("FAQ qo'shish. Savolni yozing.");
+            exit();
         }
     }
 }
