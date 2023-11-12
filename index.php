@@ -263,6 +263,6 @@ if ($update) {
     }
 }
 
-include 'helpers/admin/forQuistion.php.php';
+include 'helpers/admin/forQuistion.php';
 include 'helpers/admin/admin.php';
 ?>
