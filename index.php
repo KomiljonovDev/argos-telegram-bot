@@ -141,7 +141,7 @@
                     $district = explode("district_", $data)[1];
                     $db->updateWhere('users',
                         [
-                            'step'=>2,
+                            'step'=>5,
                             'district'=>ucwords($district)
                         ],
                         [
@@ -149,7 +149,7 @@
                             'cn'=>'='
                         ]
                     );
-                    $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($districts[$region],2))->editMessageText("Tumanni tanlang:", $mid);
+                    $bot->sendChatAction('typing', $cbid)->editMessageText("Tumanni tanlang:", $mid);
                     exit();
                 }
 			}
