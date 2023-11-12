@@ -3,7 +3,7 @@
 if ($update) {
     if (isset($update->message)) {
         if (isAdmin($fromid)) {
-            $bot->sendChatAction('typing', $fromid)->setInlineKeyBoard($panel)->sendMessage("Menyudan birini tanlang:");
+            $bot->sendChatAction('typing', $fromid)->sendMessage("Menyudan birini tanlang:");
             if (strtolower($text) == '/panel') {
                 $bot->sendChatAction('typing', $fromid)->setInlineKeyBoard($panel)->sendMessage("Menyudan birini tanlang:");
                 exit();
