@@ -113,6 +113,7 @@ if ($update) {
                         ])
                     );
                     $bot->sendChatAction('typing', $quistion['chat_id'])->sendMessage($text);
+                    $bot->sendChatAction('typing', $fromid)->sendMessage("Savollaringiz bo'lsa /quistion buyru'gini yuborib berishingiz mummin.");
                     $sended = $bot->request('editMessageText', [
                         'chat_id'=>$quistion['channel_id'],
                         'message_id'=>$quistion['message_id'],
