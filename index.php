@@ -166,10 +166,12 @@
                         $FAQ_text .= "\n" . $i . ") " . $faq['name'];
                         $faq_keyboard[] = ['text'=>$i, 'callback_data'=>'quistion_' . $faq['id']];
                     }
-                    $bot->sendChatAction('typing', $cbid)->editMessageText($FAQ_text, $mid);
+                    $bot->sendChatAction('typing', $cbid)->sendMessage($FAQ_text);
+                    exit();
                 }
                 if ($data == 'few'){
                     $bot->sendChatAction('typing', $cbid)->editMessageText("Other quistion chapter.", $mid);
+                    exit();
                 }
 			}
 		}
