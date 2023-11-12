@@ -208,7 +208,7 @@ if ($update) {
             if ($data == 'FAQ'){
                 $db->updateWhere('users',
                     [
-                        'step'=>0,
+                        'step'=>'',
                         'data'=>''
                     ],
                     [
@@ -262,6 +262,18 @@ if ($update) {
                 $chapter_keyboard[][] = ['text'=>"Boshqa", 'callback_data'=>'other_other_quistion'];
                 $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard($chapter_keyboard)->editMessageText($chapter_text, $mid);
                 exit();
+            }
+            if (mb_stripos($data, "faq_quistion_")!==false){
+                $FAQ_id = explode("faq_quistion_", $data)[1] ?? 'other';
+                $FAQ = mysqli_fetch_assoc(
+                    $db->selectWhere('faqs',[
+                        [
+                            'id'=>$FAQ_id,
+                            'cn'=>'='
+                        ]
+                    ])
+                );
+                $bot->sendChatAction('typing', $cbid)->sendMessage($FAQ['answer']);
             }
             if ((mb_stripos($data, "chapter_quistion_")!==false || $data == "other_other_quistion") && $user['data'] == 'quistion' && $user['step'] == 1) {
                 $quistion_chapter_id = explode("chapter_quistion_", $data)[1] ?? 'other';
