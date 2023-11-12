@@ -79,10 +79,8 @@ $districts  = [
     ]
 ];
 $answer_option = array_chunk([
-   [
-       ['text'=>"Ko'p beriladigan savollar", 'callback_data'=>'FAQ'],
-       ['text'=>"Boshqa", 'callback_data'=>'few']
-   ]
+   ['text'=>"Ko'p beriladigan savollar", 'callback_data'=>'FAQ'],
+   ['text'=>"Boshqa", 'callback_data'=>'few']
 ], 2);
 $resize_keyoard = [
     [
