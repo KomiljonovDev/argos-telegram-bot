@@ -78,12 +78,14 @@ $districts  = [
         ['text'=>"Norin tumani", 'callback_data'=>'district_norin']
     ]
 ];
-$answer_option = array_chunk([
+$answer_option = [
    [
-       ['text'=>"Ko'p beriladigan savollar", 'callback_data'=>'FAQ'],
        ['text'=>"Boshqa", 'callback_data'=>'few']
-   ]
-], 2);
+   ],
+    [
+        ['text'=>"Ko'p beriladigan savollar", 'callback_data'=>'FAQ'],
+    ]
+];
 $resize_keyoard = [
     [
         ['text'=>"✅ Yuborish"],
