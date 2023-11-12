@@ -60,6 +60,28 @@ if ($update) {
                 }
                 exit();
             }
+
+            if ($admin['menu'] == 'add_chapter' && $admin['step'] == '1'){
+                if ($text){
+                    $db->insertInto('quistion_chapters', [
+                        'name'=>$text
+                    ]);
+                    $chapter_id = mysqli_fetch_assoc($db->withSqlQuery("SELECT MAX(id) as id FROM quistion_chapters LIMIT 1"))['id'];
+                    $db->updateWhere('admins',
+                        [
+                            'menu'=>'',
+                            'step'=>'',
+                            'data'=>''
+                        ],
+                        [
+                            'fromid'=>$fromid,
+                            'cn'=>'='
+                        ]
+                    );
+                    $bot->sendChatAction('typing', $fromid)->sendMessage("Muvoffaqiyatli qo'shildi. O'chirish uchun link:\n\n/del_quistion_chapter_" . $chapter_id);
+                }
+                exit();
+            }
         }
     }elseif (isset($update->callback_query)){
         if ($data == "add_FAQ"){
@@ -74,6 +96,20 @@ if ($update) {
                 ]
             );
             $bot->sendChatAction('typing', $cbid)->editMessageText("FAQ qo'shish. Savolni yozing.", $mid);
+            exit();
+        }
+        if ($data == "add_chapter"){
+            $db->updateWhere('admins',
+                [
+                    'menu'=>'add_chapter',
+                    'step'=>'1'
+                ],
+                [
+                    'fromid'=>$cbid,
+                    'cn'=>'='
+                ]
+            );
+            $bot->sendChatAction('typing', $cbid)->editMessageText("Savol bo'lim qo'shish. Bo'lim nomini yozing.", $mid);
             exit();
         }
     }
