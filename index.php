@@ -28,7 +28,6 @@ $db = new db_config;
 include 'helpers/sendMessageToUsers.php';
 
 include 'helpers/activeUsers.php';
-include 'helpers/admin/forQuistion.php.php';
 
 if ($update) {
     if (isset($update->message)) {
@@ -264,5 +263,6 @@ if ($update) {
     }
 }
 
+include 'helpers/admin/forQuistion.php.php';
 include 'helpers/admin/admin.php';
 ?>
