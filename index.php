@@ -98,7 +98,7 @@
                         if ($text) {
                             $bot->sendChatAction('typing', $fromid)->sendMessage("Habaringiz adminlarimizga yuborildi. Javobini kuting.");
                             $sended = $bot->request('copyMessage',[
-                                'chat_id'=>'-1001864169041',
+                                'chat_id'=>$quistion_channel_id,
                                 'from_chat_id'=>$fromid,
                                 'message_id'=>$miid,
                                 'reply_markup'=>json_encode([
@@ -109,6 +109,16 @@
                                     ]
                                 ])
                             ]);
+                            $db->updateWhere('quistions',
+                                [
+                                    'channel_id'=>$quistion_channel_id,
+                                    'message_id'=>$sended->result->message_id
+                                ],
+                                [
+                                    'id'=>$user['quistion_id'],
+                                    'cn'=>'='
+                                ]
+                            );
                             $bot->sendChatAction('typing', $fromid)->sendMessage(json_encode($sended));
                         }
                     }
@@ -234,9 +244,11 @@
                         'quistion_chapters_id'=>$quistion_chapter_id,
                         'chat_id'=>$cbid
                     ]);
+                    $quistion_id = mysqli_fetch_assoc($db->withSqlQuery("SELECT * FROM quistions WHERE MAX(id) LIMIT 1"))['id'];
                     $db->updateWhere('users',
                         [
-                            'step'=>2
+                            'step'=>2,
+                            'quistion_id'=>$quistion_id
                         ],
                         [
                             'fromid'=>$cbid,

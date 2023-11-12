@@ -44,6 +44,8 @@ if (isset($update)) {
     }
 }
 
+$quistion_channel_id = '-1001864169041';
+
 $regions  = array_chunk([
     ['text'=>"Andijon", 'callback_data'=>'region_andijon'],
     ['text'=>"Namangan", 'callback_data'=>'region_namangan'],
