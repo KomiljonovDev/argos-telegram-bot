@@ -126,7 +126,7 @@
                     $region = explode("region_", $data)[1];
                     $db->updateWhere('users',
                         [
-                            'step'=>2,
+                            'step'=>4,
                             'region'=>ucwords($region)
                         ],
                         [
@@ -137,7 +137,7 @@
 					$bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($districts[$region],2))->editMessageText("Tumanni tanlang:", $mid);
 					exit();
 				}
-                if (mb_stripos($data, "district_")!==false && $user['data'] == 'register' && $user['step'] == 3) {
+                if (mb_stripos($data, "district_")!==false && $user['data'] == 'register' && $user['step'] == 4) {
                     $district = explode("district_", $data)[1];
                     $db->updateWhere('users',
                         [
