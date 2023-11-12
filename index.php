@@ -81,10 +81,10 @@
 							]
 						);
 						if ($myUser) {
-							$bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ." siz 1-martta botga start berdingiz </b>");
+							$bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ."\nRo'yxatdan o'tish boshlandi.\n\nF.I.SH ni kiriting.\nQuyidagi formatda: Komiljonov Obidjon Komiljon O'g'li</b>");
 							exit();
 						}
-						$bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ." siz 2-martta botga start berdingiz</b>");
+						$bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ."\nRo'yxatdan o'tish boshlandi.\n\nF.I.SH ni kiriting.\nQuyidagi formatda: Komiljonov Obidjon Komiljon O'g'li</b>");
 						exit();
 					}
 					if ($user['data'] == 'register' && $user['step'] == '1') {
@@ -135,7 +135,6 @@
 		}
         else if (isset($update->callback_query)) {
 			if (channel($cbid)) {
-
 				$user = mysqli_fetch_assoc(
 					$db->selectWhere('users',[
 						[
@@ -144,14 +143,13 @@
 						]
 					])
 				);
-
 				if ($data == 'res') {
 					$bot->sendChatAction('typing', $cbid)->editMessageText("Assalomu alaykum, xush kelibsiz!", $mid);
 					exit();
 				}
 
-				if ($data == 'inline_key') {
-					$bot->sendChatAction('typing', $cbid)->setInlineKeyBoard($inline_keyboard)->editMessageText("Edit bo'ldi", $mid);
+				if (mb_stripos("region_", $data)!==false) {
+					$bot->sendChatAction('typing', $cbid)->setInlineKeyBoard($inline_keyboard)->editMessageText("Tumanni tanlang:", $mid);
 					exit();
 				}
 			}
