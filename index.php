@@ -29,9 +29,22 @@
 
 	include 'helpers/activeUsers.php';
 
-	$inline_keyboard  = [
+	$regions  = [
 		[
-			['text'=>"inline keyboard", 'callback_data'=>'inline_key']
+            ['text'=>"Andijon", 'callback_data'=>'region_andijon'],
+            ['text'=>"Namangan", 'callback_data'=>'region_namangan'],
+            ['text'=>"Farg'ona", 'callback_data'=>'region_fargona'],
+            ['text'=>"Toshkent Viloyati", 'callback_data'=>'region_toshkentv'],
+            ['text'=>"Toshkent Shahar", 'callback_data'=>'region_toshkentsh'],
+            ['text'=>"Buxoro", 'callback_data'=>'region_buxoro'],
+            ['text'=>"Jizzax", 'callback_data'=>'region_jizzax'],
+            ['text'=>"Navoiy", 'callback_data'=>'region_navoiy'],
+            ['text'=>"Qashqadaryo", 'callback_data'=>'region_qashqadaryo'],
+            ['text'=>"Samarqand", 'callback_data'=>'region_samarqand'],
+            ['text'=>"Sirdaryo", 'callback_data'=>'region_sardaryo'],
+            ['text'=>"Surxandaryo", 'callback_data'=>'region_surxandaryo'],
+            ['text'=>"Xorazm", 'callback_data'=>'region_xorazm'],
+            ['text'=>"Qoraqalpoq", 'callback_data'=>'region_qoraqalpoq']
 		]
 	];
 
@@ -92,6 +105,22 @@
 							$bot->sendChatAction('typing', $fromid)->sendMessage("Bog'lanish uchun telefon raqamingizni yuboring:");
 						}
 					}
+                    if ($user['data'] == 'register' && $user['step'] == '2') {
+                        if ($text) {
+                            $db->updateWhere('users',
+                                [
+                                    'step'=>2,
+                                    'phone'=>$text
+                                ],
+                                [
+                                    'fromid'=>$fromid,
+                                    'cn'=>'='
+                                ]
+                            );
+
+                            $bot->sendChatAction('typing', $fromid)->setInlineKeyBoard($regions)->sendMessage("Viloyatingizni tanlang:");
+                        }
+                    }
 				}
 			}else{
 				if (removeBotUserName($text) == "/start") {
