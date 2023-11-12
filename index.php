@@ -153,7 +153,7 @@
                     exit();
                 }
                 if ($data == 'FAQ'){
-                    $FAQs = $db->selectWhere('users',[
+                    $FAQs = $db->selectWhere('faqs',[
                         [
                             'fromid'=>$cbid,
                             'cn'=>'='
@@ -163,6 +163,7 @@
                     $FAQ_text = "Tez-tez beriladigan savollar:\n";
                     $faq_keyboard = [];
                     foreach ($FAQs as $faq){
+                        $i++;
                         $FAQ_text .= "\n" . $i . ") " . $faq['name'];
                         $faq_keyboard[] = ['text'=>$i, 'callback_data'=>'quistion_' . $faq['id']];
                     }
