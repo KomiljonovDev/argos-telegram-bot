@@ -30,7 +30,6 @@
 	include 'helpers/activeUsers.php';
 
 	$regions  = array_chunk([
-		[
             ['text'=>"Andijon", 'callback_data'=>'region_andijon'],
             ['text'=>"Namangan", 'callback_data'=>'region_namangan'],
             ['text'=>"Farg'ona", 'callback_data'=>'region_fargona'],
@@ -45,7 +44,6 @@
             ['text'=>"Surxandaryo", 'callback_data'=>'region_surxandaryo'],
             ['text'=>"Xorazm", 'callback_data'=>'region_xorazm'],
             ['text'=>"Qoraqalpoq", 'callback_data'=>'region_qoraqalpoq']
-		]
 	], 2);
 
 	$resize_keyoard = [
