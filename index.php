@@ -178,7 +178,7 @@
                         ]
                     ]);
                     $i = 0;
-                    $chapter_text = "Savolingiz qaysi bo'limga yaqinroq? Agar topa olmasangiz boshqa tugmasini bosing.";
+                    $chapter_text = "Savolingiz qaysi bo'limga yaqinroq? Agar topa olmasangiz boshqa tugmasini bosing.\n";
                     $faq_keyboard = [];
                     foreach ($other_chapters as $other_chapter){
                         $i++;
