@@ -80,10 +80,10 @@ $districts  = [
 ];
 $answer_option = [
    [
-       ['text'=>"Boshqa", 'callback_data'=>'few']
+       ['text'=>"Ko'p beriladigan savollar", 'callback_data'=>'FAQ'],
    ],
     [
-        ['text'=>"Ko'p beriladigan savollar", 'callback_data'=>'FAQ'],
+        ['text'=>"Boshqa", 'callback_data'=>'other_question']
     ]
 ];
 $resize_keyoard = [
