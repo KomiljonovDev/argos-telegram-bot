@@ -64,6 +64,19 @@ if ($update) {
                     $bot->sendChatAction('typing', $chat_id)->sendMessage("<b>Assalomu alaykum, " . $full_name ."Savol yo'llash uhcun /quistion buyrug'ini yuboring.</b>");
                     exit();
                 }
+                if ($text == "/quistion"){
+                    $db->updateWhere('users',
+                        [
+                            'data'=>'quistion',
+                            'step'=>1
+                        ],
+                        [
+                            'fromid'=>$cbid,
+                            'cn'=>'='
+                        ]
+                    );
+                    $bot->sendChatAction('typing', $fromid)->setInlineKeyBoard($answer_option)->sendMessage("Savolingiz yo'nalishini tanlang:");
+                }
                 if ($user['data'] == 'register' && $user['step'] == '1') {
                     if ($text) {
                         $db->updateWhere('users',
