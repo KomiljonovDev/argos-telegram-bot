@@ -147,5 +147,5 @@
 		}
 	}
 
-	include 'helpers/admin/admin.php';
+//	include 'helpers/admin/admin.php';
 ?>
