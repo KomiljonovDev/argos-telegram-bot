@@ -107,7 +107,7 @@
                                 $bot->request('copyMessage',[
                                     'chat_id'=>$admin['fromid'],
                                     'from_chat_id'=>$fromid,
-                                    'message_id'=>$mmid
+                                    'message_id'=>$mmid$miid
                                 ]);
                             }
                         }
