@@ -244,7 +244,7 @@
                         'quistion_chapters_id'=>$quistion_chapter_id,
                         'chat_id'=>$cbid
                     ]);
-                    $quistion_id = mysqli_fetch_assoc($db->withSqlQuery("SELECT * FROM quistions WHERE MAX(id) LIMIT 1"))['id'];
+                    $quistion_id = mysqli_fetch_assoc($db->withSqlQuery("SELECT MAX(id) as id FROM quistions LIMIT 1"))['id'];
                     $db->updateWhere('users',
                         [
                             'step'=>2,
