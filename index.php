@@ -206,7 +206,7 @@
                         $chapter_keyboard[] = ['text'=>$i, 'callback_data'=>'chapter_quistion_' . $other_chapter['id']];
                     }
                     $chapter_keyboard = array_chunk($chapter_keyboard,5);
-                    $chapter_keyboard[] = ['text'=>"Boshqa", 'callback_data'=>'other_other_quistion'];
+                    $chapter_keyboard[][] = ['text'=>"Boshqa", 'callback_data'=>'other_other_quistion'];
                     $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard($chapter_keyboard)->editMessageText($chapter_text, $mid);
                     exit();
                 }
