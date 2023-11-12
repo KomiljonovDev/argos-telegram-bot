@@ -210,6 +210,24 @@
                     $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard($chapter_keyboard)->editMessageText($chapter_text, $mid);
                     exit();
                 }
+                if ((mb_stripos($data, "chapter_quistion_")!==false || $data == "other_other_quistion") && $user['data'] == 'quistion' && $user['step'] == 1) {
+                    $quistion_chapter_id = explode("chapter_quistion_", $data)[1] ?? 'other';
+                    $db->insertInto('quistions',[
+                        'quistion_chapters_id'=>$quistion_chapter_id,
+                        'chat_id'=>$cbid
+                    ]);
+                    $db->updateWhere('users',
+                        [
+                            'step'=>2
+                        ],
+                        [
+                            'fromid'=>$cbid,
+                            'cn'=>'='
+                        ]
+                    );
+                    $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard($answer_option)->editMessageText("Savolingizni yozib qoldiring. Marhamat", $mid);
+                    exit();
+                }
 			}
 		}
 	}
