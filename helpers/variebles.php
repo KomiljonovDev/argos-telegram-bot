@@ -78,7 +78,10 @@ $districts  = [
         ['text'=>"Norin tumani", 'callback_data'=>'district_norin']
     ]
 ];
-
+$answer_option = [
+    ['text'=>"Ko'p beriladigan savollar", 'callback_data'=>'FAQ'],
+    ['text'=>"Boshqa", 'callback_data'=>'other_quistion_chapter']
+];
 $resize_keyoard = [
     [
         ['text'=>"✅ Yuborish"],

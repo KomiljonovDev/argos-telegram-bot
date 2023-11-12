@@ -137,20 +137,11 @@
 					$bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($districts[$region],2))->editMessageText("Tumanni tanlang:", $mid);
 					exit();
 				}
-                if (mb_stripos($data, "district_")!==false && $user['data'] == 'register' && $user['step'] == 4) {
-                    $district = explode("district_", $data)[1];
-                    $db->updateWhere('users',
-                        [
-                            'step'=>5,
-                            'district'=>ucwords($district)
-                        ],
-                        [
-                            'fromid'=>$cbid,
-                            'cn'=>'='
-                        ]
-                    );
-                    $bot->sendChatAction('typing', $cbid)->editMessageText("Tumanni tanlang:", $mid);
-                    exit();
+                if ($data == 'FAQ'){
+                    $bot->sendChatAction('typing', $cbid)->editMessageText("FAQ chapter.", $mid);
+                }
+                if ($data == 'other_quistion_chapter'){
+                    $bot->sendChatAction('typing', $cbid)->editMessageText("Other quistion chapter.", $mid);
                 }
 			}
 		}
