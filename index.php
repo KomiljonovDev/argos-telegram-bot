@@ -155,7 +155,7 @@
                 if ($data == 'FAQ'){
                     $bot->sendChatAction('typing', $cbid)->editMessageText("FAQ chapter.", $mid);
                 }
-                if ($data == 'other_quistion_chapter'){
+                if ($data == 'few'){
                     $bot->sendChatAction('typing', $cbid)->editMessageText("Other quistion chapter.", $mid);
                 }
 			}
