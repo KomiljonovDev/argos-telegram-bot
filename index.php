@@ -183,7 +183,7 @@
                     foreach ($chapters as $chapter){
                         $i++;
                         $chapter_text .= "\n" . $i . ") " . $chapter['name'];
-                        $chapter_keyboard[] = ['text'=>$i, 'callback_data'=>'chapter_q_' . $chapter['id']];
+                        $chapter_keyboard[] = ['text'=>$i, 'callback_data'=>'chapterq_' . $chapter['id']];
                     }
                     $bot->sendChatAction('typing', $cbid)->editMessageText($chapter_text, $mid);
                     exit();
