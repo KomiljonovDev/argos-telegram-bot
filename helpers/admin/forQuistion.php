@@ -83,6 +83,11 @@ if ($update) {
                 exit();
             }
 
+            if (mb_stripos($text, "/start")!==false){
+                $bot->sendChatAction('typing', $fromid)->sendMessage(json_encode($text));
+                exit();
+            }
+
             if (mb_stripos($text, "/del_faq_")!==false){
                 $del_faq_id = explode("/del_faq_", $text)[1];
                 $db->deleteWhere('faqs',[
