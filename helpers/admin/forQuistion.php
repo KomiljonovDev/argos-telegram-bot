@@ -118,7 +118,7 @@ if ($update) {
                         'message_id'=>$quistion['message_id'],
                         'text'=>$quistion['quistion'] . "\n\nJavob berildi."
                     ]);
-                    $bot->sendChatAction('typing', $fromid)->sendMessage("Habar yuborildi." . json_encode($sended));
+                    $bot->sendChatAction('typing', $fromid)->sendMessage("Habar yuborildi.");
                 }
                 exit();
             }
