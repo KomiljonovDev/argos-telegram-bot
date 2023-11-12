@@ -153,6 +153,16 @@
                     exit();
                 }
                 if ($data == 'FAQ'){
+                    $db->updateWhere('users',
+                        [
+                            'step'=>0,
+                            'data'=>''
+                        ],
+                        [
+                            'fromid'=>$cbid,
+                            'cn'=>'='
+                        ]
+                    );
                     $FAQs = $db->selectWhere('faqs',[
                         [
                             'id'=>1,
@@ -171,6 +181,16 @@
                     exit();
                 }
                 if ($data == 'other_question'){
+                    $db->updateWhere('users',
+                        [
+                            'data'=>'quistion',
+                            'step'=>1
+                        ],
+                        [
+                            'fromid'=>$cbid,
+                            'cn'=>'='
+                        ]
+                    );
                     $other_chapters = $db->selectWhere('quistion_chapters',[
                         [
                             'id'=>1,
@@ -185,6 +205,7 @@
                         $chapter_text .= "\n" . $i . ") " . $other_chapter['name'];
                         $chapter_keyboard[] = ['text'=>$i, 'callback_data'=>'chapter_quistion_' . $other_chapter['id']];
                     }
+                    $chapter_keyboard[] = ['text'=>"Boshqa", 'callback_data'=>'other_other_quistion'];
                     $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($chapter_keyboard,5))->editMessageText($chapter_text, $mid);
                     exit();
                 }
