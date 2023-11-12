@@ -167,7 +167,7 @@
                         $FAQ_text .= "\n" . $i . ") " . $faq['name'];
                         $faq_keyboard[] = ['text'=>$i, 'callback_data'=>'quistion_' . $faq['id']];
                     }
-                    $bot->sendChatAction('typing', $cbid)->sendMessage($FAQ_text);
+                    $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($faq_keyboard,5))->sendMessage($FAQ_text);
                     exit();
                 }
                 if ($data == 'few'){
