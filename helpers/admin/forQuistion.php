@@ -95,13 +95,24 @@ if ($update) {
                     );
                     $db->updateWhere('admins',
                         [
-                            'step'=>'2'
+                            'menu'=>'',
+                            'step'=>'',
+                            'data'=>''
                         ],
                         [
                             'fromid'=>$fromid,
                             'cn'=>'='
                         ]
                     );
+                    $quistion = mysqli_fetch_assoc(
+                        $db->selectWhere('quistions',[
+                            [
+                                'id'=>$admin['data'],
+                                'cn'=>'='
+                            ]
+                        ])
+                    );
+                    $bot->sendChatAction('typing', $quistion['chat_id'])->sendMessage($text);
                     $bot->sendChatAction('typing', $fromid)->sendMessage("Habar yuborildi.");
                 }
                 exit();
