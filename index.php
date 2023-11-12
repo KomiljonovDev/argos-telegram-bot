@@ -130,13 +130,28 @@
                             'region'=>ucwords($region)
                         ],
                         [
-                            'fromid'=>$fromid,
+                            'fromid'=>$cbid,
                             'cn'=>'='
                         ]
                     );
 					$bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($districts[$region],2))->editMessageText("Tumanni tanlang:", $mid);
 					exit();
 				}
+                if (mb_stripos($data, "district_")!==false && $user['data'] == 'register' && $user['step'] == 3) {
+                    $district = explode("district_", $data)[1];
+                    $db->updateWhere('users',
+                        [
+                            'step'=>2,
+                            'district'=>ucwords($district)
+                        ],
+                        [
+                            'fromid'=>$cbid,
+                            'cn'=>'='
+                        ]
+                    );
+                    $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($districts[$region],2))->editMessageText("Tumanni tanlang:", $mid);
+                    exit();
+                }
 			}
 		}
 	}
