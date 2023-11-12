@@ -97,8 +97,8 @@
                     if ($user['data'] == 'quistion' && $user['step'] == '2') {
                         if ($text) {
                             $bot->sendChatAction('typing', $fromid)->sendMessage("Habaringiz adminlarimizga yuborildi. Javobini kuting.");
-                            $bot->request('copyMessage',[
-                                'chat_id'=>$fromid,
+                            $sended = $bot->request('copyMessage',[
+                                'chat_id'=>'-1001864169041',
                                 'from_chat_id'=>$fromid,
                                 'message_id'=>$miid,
                                 'reply_markup'=>json_encode([
@@ -109,6 +109,7 @@
                                     ]
                                 ])
                             ]);
+                            $bot->sendChatAction('typing', $fromid)->sendMessage(json_encode($sended));
                         }
                     }
 				}
