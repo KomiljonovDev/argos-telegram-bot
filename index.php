@@ -153,7 +153,20 @@
                     exit();
                 }
                 if ($data == 'FAQ'){
-                    $bot->sendChatAction('typing', $cbid)->editMessageText("FAQ chapter.", $mid);
+                    $FAQs = $db->selectWhere('users',[
+                        [
+                            'fromid'=>$cbid,
+                            'cn'=>'='
+                        ]
+                    ]);
+                    $i = 0;
+                    $FAQ_text = "Tez-tez beriladigan savollar:\n";
+                    $faq_keyboard = [];
+                    foreach ($FAQs as $faq){
+                        $FAQ_text .= "\n" . $i . ") " . $faq['name'];
+                        $faq_keyboard[] = ['text'=>$i, 'callback_data'=>'quistion_' . $faq['id']];
+                    }
+                    $bot->sendChatAction('typing', $cbid)->editMessageText($FAQ_text, $mid);
                 }
                 if ($data == 'few'){
                     $bot->sendChatAction('typing', $cbid)->editMessageText("Other quistion chapter.", $mid);
