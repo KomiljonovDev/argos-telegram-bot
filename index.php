@@ -104,7 +104,7 @@
                                 'reply_markup'=>json_encode([
                                     'inline_keyboard'=>[
                                         [
-                                            ['text'=>'Javob berish', 'url'=>'https://t.me/quizbot?id=1']
+                                            ['text'=>'Javob berish', 'url'=>'https://t.me/ArgosMurojaat_Bot?start=quistion_id_' . $user['quistion_id']]
                                         ]
                                     ]
                                 ])
