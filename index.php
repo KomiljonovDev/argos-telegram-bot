@@ -134,7 +134,7 @@
                             'cn'=>'='
                         ]
                     );
-					$bot->sendChatAction('typing', $cbid)->editMessageText("Tumanni tanlang:", $mid);
+					$bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($districts[$region],2))->editMessageText("Tumanni tanlang:", $mid);
 					exit();
 				}
 			}
