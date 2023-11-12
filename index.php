@@ -156,7 +156,7 @@
                     $FAQs = $db->selectWhere('faqs',[
                         [
                             'id'=>1,
-                            'cn'=>'=>'
+                            'cn'=>'>='
                         ]
                     ]);
                     $i = 0;
