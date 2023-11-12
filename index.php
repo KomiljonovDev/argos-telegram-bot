@@ -111,6 +111,7 @@
                             ]);
                             $db->updateWhere('quistions',
                                 [
+                                    'quistion'=>$text,
                                     'channel_id'=>$quistion_channel_id,
                                     'message_id'=>$sended->result->message_id
                                 ],
