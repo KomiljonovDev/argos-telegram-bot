@@ -145,7 +145,6 @@ if ($update) {
                                 'cn'=>'='
                             ]
                         );
-                        $bot->sendChatAction('typing', $fromid)->sendMessage(json_encode($sended));
                     }
                 }
             }
