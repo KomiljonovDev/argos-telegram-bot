@@ -83,7 +83,7 @@ if ($update) {
                 exit();
             }
 
-            if (mb_stripos($text, "/start")!==false){
+            if (mb_stripos($text, "/start quistion_id_")!==false){
                 $bot->sendChatAction('typing', $fromid)->sendMessage(json_encode($text));
                 exit();
             }
