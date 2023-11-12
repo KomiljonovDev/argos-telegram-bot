@@ -97,6 +97,19 @@
                     if ($user['data'] == 'quistion' && $user['step'] == '2') {
                         if ($text) {
                             $bot->sendChatAction('typing', $fromid)->sendMessage("Habaringiz adminlarimizga yuborildi. Javoni kuting.");
+                            $admins = $db->selectWhere('admins',[
+                                [
+                                    'id'=>1,
+                                    'cn'=>'>='
+                                ]
+                            ]);
+                            foreach ($admins as $admin){
+                                $bot->request('copyMessage',[
+                                    'chat_id'=>$admin['fromid'],
+                                    'from_chat_id'=>$fromid,
+                                    'message_id'=>$mmid
+                                ]);
+                            }
                         }
                     }
 				}
