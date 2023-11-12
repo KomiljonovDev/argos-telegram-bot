@@ -205,8 +205,9 @@
                         $chapter_text .= "\n" . $i . ") " . $other_chapter['name'];
                         $chapter_keyboard[] = ['text'=>$i, 'callback_data'=>'chapter_quistion_' . $other_chapter['id']];
                     }
+                    $chapter_keyboard = array_chunk($chapter_keyboard,5);
                     $chapter_keyboard[] = ['text'=>"Boshqa", 'callback_data'=>'other_other_quistion'];
-                    $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard(array_chunk($chapter_keyboard,5))->editMessageText($chapter_text, $mid);
+                    $bot->sendChatAction('typing', $cbid)->setInlineKeyBoard($chapter_keyboard)->editMessageText($chapter_text, $mid);
                     exit();
                 }
 			}
