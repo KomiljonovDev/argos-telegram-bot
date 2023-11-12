@@ -95,6 +95,7 @@ if ($update) {
                 exit();
             }
             if (mb_stripos($text, "/del_quistion_chapter_")!==false){
+                $bot->sendChatAction('typing', $fromid)->sendMessage("Muvoffaqiyatli O'chirildi.");
                 $quistion_chapter_id = explode("/del_quistion_chapter_", $text)[1];
                 $db->deleteWhere('quistion_chapters',[
                     [
